@@ -7,24 +7,23 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+//Configuracion socket io
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
+
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage
-  ],
+  declarations: [MyApp, HomePage],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    SocketIoModule.forRoot(config)
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage
-  ],
+  entryComponents: [MyApp, HomePage],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule {}
